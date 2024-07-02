@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8542a0a-5e99-4cec-bbf2-6762190f6015" name="Changes" comment="added requirements.txt stage1" />
+    <list default="true" id="b8542a0a-5e99-4cec-bbf2-6762190f6015" name="Changes" comment="added requirements.txt stage1">
+      <change beforePath="$PROJECT_DIR$/vercel.json" beforeDir="false" afterPath="$PROJECT_DIR$/vercel.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +38,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/DELL  LATITUDE E5480/PycharmProjects/HNG_11"
+    "last_opened_file_path": "C:/Users/DELL  LATITUDE E5480/PycharmProjects/MKD_DS_PROJECT"
   }
 }]]></component>
   <component name="RunManager">
