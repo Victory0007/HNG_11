@@ -6,6 +6,7 @@ import requests
 dotenv_path = find_dotenv()
 load_dotenv(dotenv_path)
 weather_app_api_key = os.getenv("WEATHER_APP_API_KEY")
+ipregistry_api_key = os.getenv("IPREGISTRY_API_KEY")
 
 app = Flask(__name__)
 
@@ -36,9 +37,10 @@ def hello():
     client_ip = request.remote_addr
 
     # Get location based on IP
-    location_response = requests.get(f'https://ipinfo.io/{client_ip}/json')
+    ipregistry_url = f'https://api.ipregistry.co/{client_ip}?key={ipregistry_api_key}'
+    location_response = requests.get(ipregistry_url)
     location_data = location_response.json()
-    city = location_data.get('city', 'Unknown Location')
+    city = location_data.get('location', {}).get('city', 'Unknown Location')
 
     # Get temperature based on location (dummy API key)
     weather_response = requests.get(f'http://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&appid={weather_app_api_key}')
