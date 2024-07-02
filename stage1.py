@@ -2,9 +2,8 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/api/hello', methods=['GET'])
+@app.route('/', methods=['GET'])
 def hello():
-    print(request)
     visitor_name = request.args.get('visitor_name')
     client_ip = request.remote_addr
 
