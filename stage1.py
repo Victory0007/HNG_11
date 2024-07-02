@@ -38,7 +38,7 @@ def hello():
         return jsonify({"error": "Failed to retrieve weather data"}), 500
     weather_data = weather_response.json()
     temperature = weather_data.get('main', {}).get('temp', 'N/A')
-    
+
     response = {
         "client_ip": client_ip,
         "location": city,
