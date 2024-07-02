@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from dotenv import find_dotenv, load_dotenv
 import os
 import requests
+from collections import OrderedDict
 
 dotenv_path = find_dotenv()
 load_dotenv(dotenv_path)
@@ -9,6 +10,7 @@ weather_app_api_key = os.getenv("WEATHER_APP_API_KEY")
 ipregistry_api_key = os.getenv("IPREGISTRY_API_KEY")
 
 app = Flask(__name__)
+app.json.sort_keys = False
 
 @app.route("/", methods=['GET'])
 def home():
@@ -39,11 +41,11 @@ def hello():
     weather_data = weather_response.json()
     temperature = weather_data.get('main', {}).get('temp', 'N/A')
 
-    response = {
-        "client_ip": client_ip,
-        "location": city,
-        "greeting": f"Hello, {visitor_name}!, the temperature is {temperature} degrees Celsius in {city}"
-    }
+    response = OrderedDict([
+        ("client_ip", client_ip),
+        ("location", city),
+        ("greeting", f"Hello, {visitor_name}!, the temperature is {temperature} degrees Celsius in {city}")
+    ])
 
     return jsonify(response)
 
