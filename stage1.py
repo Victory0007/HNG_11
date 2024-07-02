@@ -14,22 +14,6 @@ app = Flask(__name__)
 def home():
     return "<h1> Home Page </h1>"
 
-from flask import Flask, request, jsonify
-from dotenv import find_dotenv, load_dotenv
-import os
-import requests
-
-dotenv_path = find_dotenv()
-load_dotenv(dotenv_path)
-weather_app_api_key = os.getenv("WEATHER_APP_API_KEY")
-ipregistry_api_key = os.getenv("IPREGISTRY_API_KEY")
-
-app = Flask(__name__)
-
-@app.route("/", methods=['GET'])
-def home():
-    return "<h1> Home Page </h1>"
-
 @app.route('/api/hello', methods=['GET'])
 def hello():
     visitor_name = request.args.get('visitor_name', 'Guest')
@@ -54,8 +38,7 @@ def hello():
         return jsonify({"error": "Failed to retrieve weather data"}), 500
     weather_data = weather_response.json()
     temperature = weather_data.get('main', {}).get('temp', 'N/A')
-
-    # Build response
+    
     response = {
         "client_ip": client_ip,
         "location": city,
